@@ -31,18 +31,17 @@ class SlackServiceTest {
 
 	@BeforeEach
 	public void setup() {
-		
-		  // Mock behavior for Gson
+
+		// Mock behavior for Gson
 		when(gson.toJson(any(SlackMessage.class))).thenReturn("{\"text\": \"mocked message\"}");
 
-	    // Ensure proper initialization of the gson field in SlackService
-	    slackService = new SlackService("https://your-webhook", gson, restTemplate);
+		// Ensure proper initialization of the gson field in SlackService
+		slackService = new SlackService("https://your-webhook", gson, restTemplate);
 
-	    // Mock behavior for RestTemplate
-	    when(restTemplate.postForObject(anyString(), any(HttpEntity.class), eq(String.class)))
-	            .thenReturn("mockedResponse");
+		// Mock behavior for RestTemplate
+		when(restTemplate.postForObject(anyString(), any(HttpEntity.class), eq(String.class)))
+				.thenReturn("mockedResponse");
 	}
-
 
 	@Test
 	public void testSendMessage() {

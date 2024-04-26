@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import jakarta.servlet.http.HttpServletRequest;
+import slackpi.SlackAPI.model.SlackMessage;
 
 @RestController
 @RequestMapping("/api")
@@ -47,18 +48,19 @@ public class SlackController {
 	}
 	
 	@PostMapping("/redirect")
-    public ResponseEntity<String> redirectToExternalUrl(@RequestBody String body, @RequestHeader HttpHeaders headers) {
+    public ResponseEntity<String> redirectToExternalUrl(@RequestBody SlackMessage slackMessage, @RequestHeader HttpHeaders headers) {
         HttpHeaders forwardedHeaders = new HttpHeaders();
         headers.forEach((key, value) -> {
             if (!"host".equalsIgnoreCase(key)) {
                 forwardedHeaders.addAll(key, value);
             }
         });
-        HttpEntity<String> requestEntity = new HttpEntity<>(body, forwardedHeaders);
+        HttpEntity<SlackMessage> requestEntity = new HttpEntity<SlackMessage>(slackMessage, forwardedHeaders);
         ResponseEntity<String> response = restTemplate.postForEntity(slackApiUrl, requestEntity, String.class);
         return ResponseEntity.status(response.getStatusCode())
                              .headers(response.getHeaders())
                              .body(response.getBody());
+//		return ResponseEntity.ok().build();
     }
 	
 }

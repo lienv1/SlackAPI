@@ -2,10 +2,23 @@ package slackpi.SlackAPI.model;
 
 public class SlackMessage {
 	
-	 private final String text;
+    private String text;
 
-     public SlackMessage(String text) {
-         this.text = text;
-     }
+    // Default constructor
+    public SlackMessage() {
+    }
 
+    // Constructor with text parameter
+    public SlackMessage(String text) {
+        this.text = text;
+    }
+
+    // Getter and setter for text
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
