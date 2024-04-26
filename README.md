@@ -23,6 +23,10 @@ Once the application is built, you can run it directly from the command line
 java -jar target/slackapi-proxy.jar
 ```
 # Running as a Docker Container
+Use the following command to build the image from the Dockerfile located in your project's root directory:
+```
+docker build -t slackapi-image .
+```
 To run the service within a Docker container, use the following command:
 ```
 docker run --name slackapi-container -p 8080:8080 -e MAXREQUEST=3 -e WEBHOOK=https://hooks.slack.com/services/Your-Webhook slackapi-image
