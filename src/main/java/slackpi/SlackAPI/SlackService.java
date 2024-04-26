@@ -23,9 +23,13 @@ public class SlackService {
 	@Autowired
 	private final Gson gson;
 	
-	public SlackService(@Value("${custom.property.slackurl}") String slackurl,  Gson gson) {
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	public SlackService(@Value("${custom.property.slackurl}") String slackurl,  Gson gson, RestTemplate restTemplate) {
 		this.slackurl = slackurl;
 		this.gson = gson;
+		this.restTemplate = restTemplate;
 	}
 	
 	public void sendMessage(String message) {
@@ -34,7 +38,6 @@ public class SlackService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
-		RestTemplate restTemplate = new RestTemplate();
 		HttpEntity<String> entity = new HttpEntity<>(requestJson,headers);
 		
 		String response = restTemplate.postForObject(slackurl, entity, String.class);
