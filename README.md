@@ -30,3 +30,10 @@ docker run --name slackapi-container -p 8080:8080 -e MAXREQUEST=3 -e WEBHOOK=htt
 -e MAXREQUEST=3: Sets an environment variable MAXREQUEST inside the container, which limits the number of requests per minute to the service to prevent abuse.
 
 -e WEBHOOK=https://hooks.slack.com/services/Your-Webhook: Sets an environment variable WEBHOOK with your Slack webhook URL. Replace https://hooks.slack.com/services/Your-Webhook with your actual webhook URL.
+
+# API Documentation
+
+Access the Swagger API documentation at:
+```
+http://localhost:8080/swagger-ui/index.html
+```
