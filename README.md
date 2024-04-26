@@ -5,12 +5,12 @@ This repository contains the Slack API Proxy Service, designed to securely inter
 
 1. Navigate to the src/main/resources/ directory.
 2. Open the application.properties file.
-3. Locate the line starting with slack.webhook.url=.
+3. Locate the line starting with custom.property.slackurl=
 4. Replace the existing URL with your Slack webhook URL.
 
 Example:
 ```
-slack.webhook.url=https://hooks.slack.com/services/Your-Webhook
+custom.property.slackurl=${WEBHOOK:https://hooks.slack.com/services/Your-Webhook}
 ```
 # Building the Application
 After configuring your application.properties, the next step is to build the application using Maven.
