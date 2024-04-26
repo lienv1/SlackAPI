@@ -12,6 +12,16 @@ Example:
 ```
 slack.webhook.url=https://hooks.slack.com/services/Your-Webhook
 ```
+# Building the Application
+After configuring your application.properties, the next step is to build the application using Maven.
+```
+mvn clean package
+```
+# Running the Application
+Once the application is built, you can run it directly from the command line
+```
+java -jar target/slackapi-proxy.jar
+```
 # Running as a Docker Container
 To run the service within a Docker container, use the following command:
 ```
