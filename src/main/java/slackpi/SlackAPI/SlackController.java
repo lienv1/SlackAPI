@@ -60,7 +60,6 @@ public class SlackController {
         return ResponseEntity.status(response.getStatusCode())
                              .headers(response.getHeaders())
                              .body(response.getBody());
-//		return ResponseEntity.ok().build();
     }
 	
 }
