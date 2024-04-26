@@ -41,8 +41,6 @@ public class SlackService {
 		HttpEntity<String> entity = new HttpEntity<>(requestJson,headers);
 		
 		String response = restTemplate.postForObject(slackurl, entity, String.class);
-		
-		System.out.println(response);
 		 
 	}
 
